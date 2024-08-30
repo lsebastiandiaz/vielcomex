@@ -1,17 +1,23 @@
-'use client'
+"use client";
 
-import { useState, forwardRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone, faMapMarkerAlt, faUser, faComment } from '@fortawesome/free-solid-svg-icons';
-import Image from 'next/image';
-import tradeImage from '../../public/background.jpg';
-import emailjs from 'emailjs-com';
+import { useState, forwardRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEnvelope,
+  faPhone,
+  faMapMarkerAlt,
+  faUser,
+  faComment,
+} from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
+import tradeImage from "../../public/background.jpg";
+import emailjs from "emailjs-com";
 
 const ContactForm = forwardRef((props, ref) => {
   const [formData, setFormData] = useState({
-    to_name: '',
-    from_name: '',
-    message: '',
+    to_name: "",
+    from_name: "",
+    message: "",
   });
 
   const handleChange = (e) => {
@@ -22,48 +28,88 @@ const ContactForm = forwardRef((props, ref) => {
     e.preventDefault();
 
     // Configurar el envío de correo con EmailJS
-    emailjs.send('service_sc8jf4u', 'template_ebt7uyo', formData, 'DywNvcpAW4mOiMYWr')
-      .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
-        alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
-      }, (err) => {
-        console.log('FAILED...', err);
-        alert('Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.');
-      });
+    emailjs
+      .send(
+        "service_294f0hn",
+        "template_029iw74",
+        formData,
+        "VWKZg5D-msfCGB2ud"
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          alert(
+            "¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto."
+          );
+        },
+        (err) => {
+          console.log("FAILED...", err);
+          alert(
+            "Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde."
+          );
+        }
+      );
 
-    setFormData({ to_name: '', from_name: '', message: '' });
+    setFormData({ to_name: "", from_name: "", message: "" });
   };
 
   return (
-    <section ref={ref} className="bg-gradient-to-r from-gray-800 to-gray-900 py-16 px-4 md:px-8">
+    <section
+      ref={ref}
+      className="bg-gradient-to-r from-gray-800 to-gray-900 py-16 px-4 md:px-8"
+    >
       <div className="max-w-6xl mx-auto bg-gray-700 rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
         <div className="relative md:w-1/2 h-64 md:h-auto">
-          <Image src={tradeImage} alt="Comercio Exterior" layout="fill" objectFit="cover" className="z-0" />
+          <Image
+            src={tradeImage}
+            alt="Comercio Exterior"
+            layout="fill"
+            objectFit="cover"
+            className="z-0"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-90 z-10"></div>
           <div className="absolute inset-0 flex flex-col justify-center p-8 z-20">
             <h2 className="text-3xl font-bold text-white mb-4">Contáctanos</h2>
             <p className="text-gray-300 mb-8 hidden md:block">
-              Estamos aquí para ayudarte. Completa el formulario y nos pondremos en contacto contigo lo antes posible.
+              Estamos aquí para ayudarte. Completa el formulario y nos pondremos
+              en contacto contigo lo antes posible.
             </p>
             <div className="mb-4 flex items-center">
-              <FontAwesomeIcon icon={faEnvelope} className="text-gray-400 mr-2 text-sm" />
+              <FontAwesomeIcon
+                icon={faEnvelope}
+                className="text-gray-400 mr-2 text-sm"
+              />
               <span className="text-gray-300">contacto@vielcomex.com</span>
             </div>
             <div className="mb-4 flex items-center">
-              <FontAwesomeIcon icon={faPhone} className="text-gray-400 mr-2 text-sm" />
-              <span className="text-gray-300">+123 456 7890</span>
+              <FontAwesomeIcon
+                icon={faPhone}
+                className="text-gray-400 mr-2 text-sm"
+              />
+              <span className="text-gray-300">+54 113647-7584</span>
             </div>
             <div className="mb-8 flex items-center">
-              <FontAwesomeIcon icon={faMapMarkerAlt} className="text-gray-400 mr-2 text-sm" />
-              <span className="text-gray-300">123 Calle Comercio, Ciudad, País</span>
+              <FontAwesomeIcon
+                icon={faMapMarkerAlt}
+                className="text-gray-400 mr-2 text-sm"
+              />
+              <span className="text-gray-300">
+                Hipolito Yrigoyen 850, CABA, Buenos Aires.
+              </span>
             </div>
           </div>
         </div>
         <div className="md:w-1/2 p-6 md:p-8 bg-gray-700">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-200">
-                <FontAwesomeIcon icon={faUser} className="text-gray-200 mr-2 text-sm" />
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-200"
+              >
+                <FontAwesomeIcon
+                  icon={faUser}
+                  className="text-gray-200 mr-2 text-sm"
+                />
                 Nombre
               </label>
               <input
@@ -78,8 +124,14 @@ const ContactForm = forwardRef((props, ref) => {
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-200">
-                <FontAwesomeIcon icon={faEnvelope} className="text-gray-200 mr-2 text-sm" />
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-200"
+              >
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  className="text-gray-200 mr-2 text-sm"
+                />
                 Correo Electrónico
               </label>
               <input
@@ -94,8 +146,14 @@ const ContactForm = forwardRef((props, ref) => {
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-200">
-                <FontAwesomeIcon icon={faComment} className="text-gray-200 mr-2 text-sm" />
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-gray-200"
+              >
+                <FontAwesomeIcon
+                  icon={faComment}
+                  className="text-gray-200 mr-2 text-sm"
+                />
                 Mensaje
               </label>
               <textarea
